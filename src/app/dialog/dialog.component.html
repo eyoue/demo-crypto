@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data?.title}}</h1>
+<div mat-dialog-content>
+  <mat-selection-list (selectionChange)="selectAction($event.option.value)" [multiple]="false">
+    <mat-list-option *ngFor="let item of data?.listItems" [value]="item.data">
+      <div [innerHTML]="item.view"></div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>{{data?.cancelButton?.label}}</button>
+  <button mat-button mat-dialog-close [disabled]="actionDisabled" (click)="clickAction()">{{data?.actionButton?.label}}</button>
+</div>
